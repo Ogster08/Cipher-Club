@@ -1,5 +1,6 @@
 ﻿namespace Vigenere_solver
 {
+
     //////////QUICK NOTE//////////
     /* Works best with texts over 500 letters long 
         * With less than 500 letters and it may get 1 or 2 letters wrong

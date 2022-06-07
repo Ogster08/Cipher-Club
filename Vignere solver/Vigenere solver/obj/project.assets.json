@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\olive\\source\\repos\\Vigenere solver\\Vigenere solver\\Vigenere solver.csproj",
+      "projectUniqueName": "C:\\Users\\olive\\Documents\\GitHub\\Cipher-Club\\Vignere solver\\Vigenere solver\\Vigenere solver.csproj",
       "projectName": "Vigenere solver",
-      "projectPath": "C:\\Users\\olive\\source\\repos\\Vigenere solver\\Vigenere solver\\Vigenere solver.csproj",
+      "projectPath": "C:\\Users\\olive\\Documents\\GitHub\\Cipher-Club\\Vignere solver\\Vigenere solver\\Vigenere solver.csproj",
       "packagesPath": "C:\\Users\\olive\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\olive\\source\\repos\\Vigenere solver\\Vigenere solver\\obj\\",
+      "outputPath": "C:\\Users\\olive\\Documents\\GitHub\\Cipher-Club\\Vignere solver\\Vigenere solver\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
