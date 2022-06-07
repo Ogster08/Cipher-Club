@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "dc451ff1-fd32-45c1-9fdc-3f811c0bdc6b": {
+      "ProjectGuid": "dc451ff1-fd32-45c1-9fdc-3f811c0bdc6b",
+      "DisplayName": "Vigenere solver",
+      "ColorIndex": 0
+    },
+    "d7963e31-d6ac-4f2a-baf6-49ec7573b18e": {
+      "ProjectGuid": "d7963e31-d6ac-4f2a-baf6-49ec7573b18e",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
