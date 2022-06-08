@@ -2,7 +2,9 @@
 {
 
     //////////QUICK NOTE//////////
-    /* Works best with texts over 500 letters long 
+    /*  
+        * cipher text must be at least 50 characters long
+        * Works best with texts over 500 letters long 
         * With less than 500 letters and it may get 1 or 2 letters wrong
         * sometimes may have the key be doubled e.g. cryptiicryptii instead of cryptii
         * longer keys take slightly longer to run because it has to output every permutation - sometimes creating cool patterns ☺
@@ -19,9 +21,14 @@
             while (true)
             {
                 //////////get the text input//////////
-                Console.Write("\nEnter encrypted text: ");
-                string text = Console.ReadLine().ToLower();
-                string lettersText = string.Join("", text.Where(char.IsLetter).ToArray()); //remove non letters
+                string text = "";
+                string lettersText = "";
+                while (lettersText.Length < 200)
+                {
+                    Console.Write("Enter encrypted text (at least 200 characters long): ");
+                    text = Console.ReadLine().ToLower();
+                    lettersText = string.Join("", text.Where(char.IsLetter).ToArray()); //remove non letters
+                }
 
                 //////////get key length//////////
                 float[] keyScores = new float[14];
@@ -128,9 +135,9 @@
                 Console.WriteLine();
                 Console.WriteLine(string.Join("", output)); //the decryption
                 Console.WriteLine();
-                foreach (var item in keysPermutations) { foreach (var ascii in item) { Console.Write(Convert.ToChar(ascii + 97).ToString()); } if(Array.IndexOf(keysPermutations, item) < keysPermutations.Length -1)Console.Write(", ");  } // every key permutation incase key isn't quite right
+                foreach (var item in keysPermutations) { foreach (var ascii in item) { Console.Write(Convert.ToChar(ascii + 97).ToString()); } if (Array.IndexOf(keysPermutations, item) < keysPermutations.Length - 1) Console.Write(", "); } // every key permutation incase key isn't quite right
                 Console.WriteLine();
-                
+
             }
 
             //////////end of program//////////

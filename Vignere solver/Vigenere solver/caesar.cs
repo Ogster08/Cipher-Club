@@ -18,7 +18,7 @@
         public static Dictionary<string, int> TextFrequency(string testText)
         {
             //a 'blank' dictionary with every letter set at 0 to edit
-            var characterCount = new Dictionary<string, int>(){ { "a", 0}, { "b", 0}, { "c", 0}, { "d", 0},{ "e", 0}, { "f", 0}, { "g", 0}, { "h", 0}, { "i", 0}, { "j", 0}, { "k", 0}, { "l", 0}, { "m", 0}, { "n", 0}, { "o", 0}, { "p", 0}, { "q", 0}, { "r", 0}, { "s", 0}, { "t", 0}, { "u", 0}, { "v", 0}, { "w", 0}, { "x", 0}, { "y", 0}, { "z", 0} };
+            var characterCount = new Dictionary<string, int>() { { "a", 0 }, { "b", 0 }, { "c", 0 }, { "d", 0 }, { "e", 0 }, { "f", 0 }, { "g", 0 }, { "h", 0 }, { "i", 0 }, { "j", 0 }, { "k", 0 }, { "l", 0 }, { "m", 0 }, { "n", 0 }, { "o", 0 }, { "p", 0 }, { "q", 0 }, { "r", 0 }, { "s", 0 }, { "t", 0 }, { "u", 0 }, { "v", 0 }, { "w", 0 }, { "x", 0 }, { "y", 0 }, { "z", 0 } };
 
             //looping through each character in the test text
             foreach (char c in testText) { characterCount[c.ToString()]++; } //increse the count of that character by 1
@@ -31,7 +31,7 @@
         public static double ChiSquareTest(string testText)
         {
             //a dictionary with the excpected percentage values of each letter
-            var exspectedFrequencies = new Dictionary<string, double>(){ { "e", 11.1607 },{ "a", 8.4966 },{ "r", 7.5809 },{ "i", 7.5448 },{ "o", 7.1635 },{ "t", 6.9509 },{ "n", 6.6544 },{ "s", 5.7351 },{ "l", 5.4893 },{ "c", 4.5388 },{ "u", 3.6308 },{ "d", 3.3844 },{ "p", 3.1671 },{ "m", 3.0129 },{ "h", 3.0034 },{ "g", 2.4705 },{ "b", 2.0720 },{ "f", 1.8121 },{ "y", 1.7779 },{ "w", 1.2899 },{ "k", 1.1016 },{ "v", 1.0074 },{ "x", 0.2902 },{ "z", 0.2722 },{ "j", 0.1965 },{ "q", 0.1962 } };
+            var exspectedFrequencies = new Dictionary<string, double>() { { "e", 11.1607 }, { "a", 8.4966 }, { "r", 7.5809 }, { "i", 7.5448 }, { "o", 7.1635 }, { "t", 6.9509 }, { "n", 6.6544 }, { "s", 5.7351 }, { "l", 5.4893 }, { "c", 4.5388 }, { "u", 3.6308 }, { "d", 3.3844 }, { "p", 3.1671 }, { "m", 3.0129 }, { "h", 3.0034 }, { "g", 2.4705 }, { "b", 2.0720 }, { "f", 1.8121 }, { "y", 1.7779 }, { "w", 1.2899 }, { "k", 1.1016 }, { "v", 1.0074 }, { "x", 0.2902 }, { "z", 0.2722 }, { "j", 0.1965 }, { "q", 0.1962 } };
 
             //getting a dictionary of the observed counts of each letter
             Dictionary<string, int> textFrequencies = TextFrequency(testText);
@@ -87,8 +87,8 @@
             scores.CopyTo(secondLowest, 0);
             secondLowest[Array.IndexOf(secondLowest, secondLowest.Min())] = 9999;
 
-            if (secondLowest.Min() - scores.Min() < 15 && scores.Min() > 50) { keys =  new int[] { Array.IndexOf(scores, secondLowest.Min()), Array.IndexOf(scores, scores.Min()) }; }// english language is weird
-            else { keys =  new int[] { Array.IndexOf(scores, scores.Min()), Array.IndexOf(scores, secondLowest.Min()) }; }
+            if (secondLowest.Min() - scores.Min() < 15 && scores.Min() > 50) { keys = new int[] { Array.IndexOf(scores, secondLowest.Min()), Array.IndexOf(scores, scores.Min()) }; }// english language is weird
+            else { keys = new int[] { Array.IndexOf(scores, scores.Min()), Array.IndexOf(scores, secondLowest.Min()) }; }
 
             Decrypt();
         }
@@ -112,7 +112,7 @@
                 else { decryptionArray[i] = text[i].ToString(); } //adding non letter straight to decryption text
             }
             //returning the decryption text as a string
-             decryption = string.Join("", decryptionArray);
+            decryption = string.Join("", decryptionArray);
         }
     }
 }
