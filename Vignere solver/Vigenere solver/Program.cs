@@ -121,7 +121,7 @@
                     {
                         //try needed because not all decryption parts are the same size
                         try { output.Add(item[i].ToString()); }
-                        catch (Exception) { break; }
+                        catch (IndexOutOfRangeException) { break; }
                     }
                 }
 
@@ -155,7 +155,6 @@
                 for (int l = x; l < text.Length + 1; l += keyLength)
                 {
                     textList.Add(Convert.ToString(text.Substring(l - 1, 1)));
-
                 }
                 textArray[x - 1] = string.Join("", textList);
             }

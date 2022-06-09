@@ -17,38 +17,29 @@
         //function to create a dictionary of the count frequency of each character in the testText given
         public static Dictionary<string, int> TextFrequency(string testText)
         {
-            //a 'blank' dictionary with every letter set at 0 to edit
+            //dictionary for counting letters
             var characterCount = new Dictionary<string, int>() { { "a", 0 }, { "b", 0 }, { "c", 0 }, { "d", 0 }, { "e", 0 }, { "f", 0 }, { "g", 0 }, { "h", 0 }, { "i", 0 }, { "j", 0 }, { "k", 0 }, { "l", 0 }, { "m", 0 }, { "n", 0 }, { "o", 0 }, { "p", 0 }, { "q", 0 }, { "r", 0 }, { "s", 0 }, { "t", 0 }, { "u", 0 }, { "v", 0 }, { "w", 0 }, { "x", 0 }, { "y", 0 }, { "z", 0 } };
 
-            //looping through each character in the test text
             foreach (char c in testText) { characterCount[c.ToString()]++; } //increse the count of that character by 1
-
-            //return the dictionary with the character counts
             return characterCount;
         }
 
         //return a value that shows the testText's distribution compared to normal english  link to formula => https://g.co/kgs/si6Yta
         public static double ChiSquareTest(string testText)
         {
-            //a dictionary with the excpected percentage values of each letter
+            //a dictionary with the excpected frequency of each letter
             var exspectedFrequencies = new Dictionary<string, double>() { { "e", 11.1607 }, { "a", 8.4966 }, { "r", 7.5809 }, { "i", 7.5448 }, { "o", 7.1635 }, { "t", 6.9509 }, { "n", 6.6544 }, { "s", 5.7351 }, { "l", 5.4893 }, { "c", 4.5388 }, { "u", 3.6308 }, { "d", 3.3844 }, { "p", 3.1671 }, { "m", 3.0129 }, { "h", 3.0034 }, { "g", 2.4705 }, { "b", 2.0720 }, { "f", 1.8121 }, { "y", 1.7779 }, { "w", 1.2899 }, { "k", 1.1016 }, { "v", 1.0074 }, { "x", 0.2902 }, { "z", 0.2722 }, { "j", 0.1965 }, { "q", 0.1962 } };
 
             //getting a dictionary of the observed counts of each letter
             Dictionary<string, int> textFrequencies = TextFrequency(testText);
 
-            //creating the score variable for the chi squared value
+            //chisquare test
             double score = 0;
 
-            //sum for each letter in the alphabet
             foreach (string d in textFrequencies.Keys)
             {
-                //make he letter lowercase because it randomly becomes uppercase
                 string s = d.ToLower();
-
-                //turn the exspected percentage to exspected count by first turning the percentage to a decimal and then get the count by timesing it by the length of the text
                 double exspectedCount = exspectedFrequencies[s] / 100 * testText.Length;
-
-                //sqaure the observed count of the character negative the exspected count then divide by the exspected count and ad it to the score
                 score += Math.Pow(textFrequencies[s] - exspectedCount, 2) / exspectedCount;
             }
 
@@ -56,6 +47,7 @@
             return score;
         }
 
+        //solve the caesar by bruteforcing it and doing the chisquare test for each to check which is english
         public void Solve()
         {
             //create an array for the chi square score for each possible caeser key 
@@ -65,7 +57,6 @@
             for (int i = 0; i < 26; i++)
 
             {
-                //create a new array for the new caeser 'decryption'
                 string[] ceaser = new string[text.Length];
 
                 //loop over each character in the text and take away the offset and then add it to the caeser array
@@ -87,8 +78,7 @@
             scores.CopyTo(secondLowest, 0);
             secondLowest[Array.IndexOf(secondLowest, secondLowest.Min())] = 9999;
 
-            if (secondLowest.Min() - scores.Min() < 15 && scores.Min() > 50) { keys = new int[] { Array.IndexOf(scores, secondLowest.Min()), Array.IndexOf(scores, scores.Min()) }; }// english language is weird
-            else { keys = new int[] { Array.IndexOf(scores, scores.Min()), Array.IndexOf(scores, secondLowest.Min()) }; }
+            keys = new int[] { Array.IndexOf(scores, (secondLowest.Min() - scores.Min() < 15 && scores.Min() > 50)? secondLowest.Min() : scores.Min()), Array.IndexOf(scores, (secondLowest.Min() - scores.Min() < 15 && scores.Min() > 50)? scores.Min() : secondLowest.Min()) };// english language is weird - replacement of if else
 
             Decrypt();
         }
@@ -102,14 +92,9 @@
             //cycling through each character in the text to decrypt the character each time
             for (int i = 0; i < text.Length; i++)
             {
-                //only letters needed to be decrypted
-                if (char.IsLetter(text[i]))
-                {
-                    int x = (Convert.ToInt32(text[i]) - keys[0] - 97) % 26; //converting ascii of char to int and decrypting the number
-                    if (x < 0) { x += 26; } //% will keep negative numbers negative but we need the numbers to be positive to convert back to a char
-                    decryptionArray[i] = Convert.ToChar(x + 97).ToString(); //converting number to char and adding it to the decryption text
-                }
-                else { decryptionArray[i] = text[i].ToString(); } //adding non letter straight to decryption text
+                int x = (Convert.ToInt32(text[i]) - keys[0] - 97) % 26; //converting ascii of char to int and decrypting the number
+                if (x < 0) { x += 26; } //% will keep negative numbers negative but we need the numbers to be positive to convert back to a char
+                decryptionArray[i] = Convert.ToChar(x + 97).ToString(); //converting number to char and adding it to the decryption text
             }
             //returning the decryption text as a string
             decryption = string.Join("", decryptionArray);
