@@ -1,0 +1,3 @@
+[submodule "Vignere-solver"]
+	path = Vignere-solver
+	url = https://github.com/Ogster08/Vignere-solver
