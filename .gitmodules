@@ -4,3 +4,6 @@
 [submodule "Affine-solver"]
 	path = Affine-solver
 	url = https://github.com/Ogster08/Affine-solver
+[submodule "Rail-Fence-solver"]
+	path = Rail-Fence-solver
+	url = https://github.com/Ogster08/Rail-Fence-solver
