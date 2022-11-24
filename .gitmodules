@@ -7,3 +7,6 @@
 [submodule "Rail-Fence-solver"]
 	path = Rail-Fence-solver
 	url = https://github.com/Ogster08/Rail-Fence-solver
+[submodule "Columnar-Transposition-Solver"]
+	path = Columnar-Transposition-Solver
+	url = https://github.com/Ogster08/Columnar-Transposition-Solver
